@@ -42,11 +42,18 @@
   "includes": [
     {
       "type": "page",
-      "name": "Sensu Servers",
+      "name": "Sensu Servers aaaaa",
       "component": "SensuServersCtrl",
       "role": "Viewer",
       "addToNav": true,
       "defaultNav": true
+    },
+    {
+      "type": "page",
+      "name": "Root Page (Tab B)",
+      "path": "/a/yourorg-simple-app/?tab=b",
+      "role": "Viewer",
+      "addToNav": true
     },
     {
       "type": "page",
@@ -55,16 +62,6 @@
       "role": "Viewer",
       "addToNav": false,
       "defaultNav": false
-    },
-    {
-      "type": "dashboard",
-      "name": "Sensu Summary",
-      "path": "dashboards/sensu-summary.json",
-      "addToNav": true
-    },
-    {
-      "type": "datasource",
-      "name": "Sensu Core"
     }
   ],
   "dependencies": {

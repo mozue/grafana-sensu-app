@@ -6,7 +6,8 @@
   "scripts": {
     "build": "grafana-toolkit plugin:build",
     "dev": "grafana-toolkit plugin:dev",
-    "test": "grafana-toolkit plugin:test"
+    "test": "grafana-toolkit plugin:test",
+    "watch": "grafana-toolkit plugin:dev --watch"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,8 @@
     "@fortawesome/free-regular-svg-icons": "5.10.2",
     "@fortawesome/free-solid-svg-icons": "5.10.2",
     "@fortawesome/react-fontawesome": "0.1.4",
-    "@grafana/toolkit": "next",
-    "@grafana/ui": "next",
+    "@grafana/toolkit": "6.4.0",
+    "@grafana/ui": "6.4.0",
     "@material-ui/icons": "4.2.1",
     "@types/angular": "1.6.56",
     "@types/classnames": "2.2.9",
