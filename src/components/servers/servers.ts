@@ -1,6 +1,5 @@
-import angular from 'angular';
-
 import appEvents from 'grafana/app/core/app_events';
+import { IHttpService } from "angular";
 
 export class SensuServersCtrl {
   server: any;
@@ -12,7 +11,7 @@ export class SensuServersCtrl {
   static templateUrl = 'components/servers/partials/servers.html';
 
   /** @ngInject */
-  constructor($scope, $injector, private backendSrv, private contextSrv, private $location) {
+  constructor($scope, $injector, $http: IHttpService, private backendSrv, private contextSrv, private $location) {
     const self = this;
     this.isOrgEditor = contextSrv.hasRole('Editor') || contextSrv.hasRole('Admin');
     document.title = 'Grafana Sensu App';
