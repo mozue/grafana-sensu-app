@@ -1,5 +1,10 @@
 import appEvents from 'grafana/app/core/app_events';
-import { IHttpService } from "angular";
+import { IHttpService } from 'angular';
+import { getBackendSrv } from '@grafana/runtime';
+import { VariableSrv2 } from 'grafana_app/features/templating/variable_srv';
+import 'grafana_app/features/templating/all';
+
+export {SubMenuCtrl} from 'grafana_app/features/dashboard/components/SubMenu/SubMenuCtrl';
 
 export class SensuServersCtrl {
   server: any;
@@ -7,17 +12,37 @@ export class SensuServersCtrl {
   datasources: [any];
   servers: any;
   isOrgEditor: boolean;
+  dashboard: any;
 
   static templateUrl = 'components/servers/partials/servers.html';
 
   /** @ngInject */
-  constructor($scope, $injector, $http: IHttpService, private backendSrv, private contextSrv, private $location) {
+  constructor(
+    $scope,
+    $injector,
+    $http: IHttpService,
+    private backendSrv,
+    private dashboardSrv,
+    private dashboardLoaderSrv,
+    private contextSrv,
+    private timeSrv,
+    private variableSrv2: VariableSrv2,
+    private $location
+  ) {
     const self = this;
     this.isOrgEditor = contextSrv.hasRole('Editor') || contextSrv.hasRole('Admin');
     document.title = 'Grafana Sensu App';
     this.servers = [];
     this.pageReady = false;
     this.getSensuServers();
+    getBackendSrv()
+      .get('/api/dashboards/uid/postgresql')
+      .then((result: any) => {
+        this.dashboard = dashboardSrv.create(result.dashboard, result.meta);
+        this.dashboard.time = { from: 'now-30d', to: 'now' };
+        this.variableSrv2.init(this.dashboard);
+        this.timeSrv.init(this.dashboard);
+      });
   }
 
   async getSensuServers() {
