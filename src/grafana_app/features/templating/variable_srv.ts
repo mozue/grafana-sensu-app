@@ -277,14 +277,12 @@ export class VariableSrv2 {
   updateUrlParamsWithCurrentVariables() {
     // update url
     // const params = this.$location.search();
-
     // remove variable params
     // _.each(params, (value, key) => {
     //   if (key.indexOf('var-') === 0) {
     //     delete params[key];
     //   }
     // });
-
     // add new values
     // this.templateSrv.fillVariableValuesForUrl(params);
     // // update url

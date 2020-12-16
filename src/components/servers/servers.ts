@@ -3,8 +3,9 @@ import { IHttpService } from 'angular';
 import { getBackendSrv } from '@grafana/runtime';
 import { VariableSrv2 } from 'grafana_app/features/templating/variable_srv';
 import 'grafana_app/features/templating/all';
+import { AppParamService } from 'service/AppParamService';
 
-export {SubMenuCtrl} from 'grafana_app/features/dashboard/components/SubMenu/SubMenuCtrl';
+export { SubMenuCtrl } from 'grafana_app/features/dashboard/components/SubMenu/SubMenuCtrl';
 
 export class SensuServersCtrl {
   server: any;
@@ -27,6 +28,7 @@ export class SensuServersCtrl {
     private contextSrv,
     private timeSrv,
     private variableSrv2: VariableSrv2,
+    private appParamService: AppParamService,
     private $location
   ) {
     const self = this;
@@ -35,14 +37,16 @@ export class SensuServersCtrl {
     this.servers = [];
     this.pageReady = false;
     this.getSensuServers();
-    getBackendSrv()
-      .get('/api/dashboards/uid/postgresql')
-      .then((result: any) => {
-        this.dashboard = dashboardSrv.create(result.dashboard, result.meta);
-        this.dashboard.time = { from: 'now-30d', to: 'now' };
-        this.variableSrv2.init(this.dashboard);
-        this.timeSrv.init(this.dashboard);
-      });
+    // getBackendSrv()
+    //   .get('/api/dashboards/uid/postgresql')
+    //   .then((result: any) => {
+    //     this.dashboard = dashboardSrv.create(result.dashboard, result.meta);
+    //     this.dashboard.time = { from: 'now-30d', to: 'now' };
+    //     this.variableSrv2.init(this.dashboard);
+    //     this.timeSrv.init(this.dashboard);
+    //   });
+
+    appParamService.param1 = 'test test';
   }
 
   async getSensuServers() {

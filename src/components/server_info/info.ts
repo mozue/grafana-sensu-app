@@ -1,4 +1,5 @@
 import angular from 'angular';
+import { AppParamService } from 'service/AppParamService';
 
 export class SensuServerInfoCtrl {
   server: any;
@@ -11,7 +12,16 @@ export class SensuServerInfoCtrl {
   static templateUrl = 'components/server_info/partials/server_info.html';
 
   /** @ngInject */
-  constructor($scope, $injector, private backendSrv, private datasourceSrv, private $q, private $location, private alertSrv) {
+  constructor(
+    $scope,
+    $injector,
+    private backendSrv,
+    private datasourceSrv,
+    private $q,
+    private $location,
+    private alertSrv,
+    private appParamService: AppParamService
+  ) {
     this.pageReady = false;
     this.$q = $q;
     this.$scope = $scope;

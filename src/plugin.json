@@ -53,7 +53,7 @@
       "name": "Sensu Server Info",
       "component": "SensuServerInfoCtrl",
       "role": "Viewer",
-      "addToNav": false,
+      "addToNav": true,
       "defaultNav": false
     },
     {

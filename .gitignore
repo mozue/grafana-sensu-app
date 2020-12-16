@@ -39,5 +39,6 @@ jspm_packages
 
 .tscache
 .DS_Store
+.history
 
 dist
