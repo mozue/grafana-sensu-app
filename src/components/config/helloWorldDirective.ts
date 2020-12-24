@@ -8,13 +8,13 @@ export class HelloWorldDirective implements angular.IDirective {
   controllerAs = 'ctrl';
 
   /**
-  * instance生成
-  *
-  * @returns {function(): DropdownMenu}
-  * @constructor
-  */
-  public static Factory(): ng.IDirectiveFactory {
-    var directive = () => {
+   * instance生成
+   *
+   * @returns {function(): DropdownMenu}
+   * @constructor
+   */
+  static Factory(): angular.IDirectiveFactory {
+    const directive = () => {
       return new HelloWorldDirective();
     };
     directive.$inject = [];
